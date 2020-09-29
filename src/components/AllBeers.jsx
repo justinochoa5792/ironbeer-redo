@@ -1,24 +1,12 @@
-import React, { useState, useEffect } from "react";
-import Axios from "axios";
+import React from "react";
+import { Link } from "react-router-dom";
 import "../App.css";
 
-function AllBeers() {
-  const [beer, setBeer] = useState([]);
-
-  useEffect(() => {
-    const renderBeer = async () => {
-      const response = await Axios.get(
-        "https://ih-beers-api2.herokuapp.com/beers"
-      );
-      console.log(response.data);
-      setBeer(response.data);
-    };
-    renderBeer();
-  }, []);
+function AllBeers(props) {
   return (
     <div className="allbeers">
       <h1>All Beers</h1>
-      {beer.map((eachBeer) => {
+      {props.beers.map((eachBeer) => {
         return (
           <ul>
             <li>
